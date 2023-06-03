@@ -1,6 +1,7 @@
 package com.tao.arouterdemo2
 
-import com.tao.communicate.service.BaseApp
+import com.alibaba.android.arouter.launcher.ARouter
+import com.tao.baselibrary.base.BaseApp
 
 /**
  * @Author tangtao
@@ -8,6 +9,15 @@ import com.tao.communicate.service.BaseApp
  * @Date: 2023/6/3 12:56 PM
  */
 class App : BaseApp() {
+
+    override fun onCreate() {
+        super.onCreate()
+        if (BuildConfig.DEBUG){
+            ARouter.openLog()
+            ARouter.openDebug()
+        }
+        ARouter.init(this)
+    }
 
 
 }

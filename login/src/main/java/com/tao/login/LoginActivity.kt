@@ -1,13 +1,25 @@
 package com.tao.login
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.tao.baselibrary.base.BaseTitleActivity
 
 @Route(path = "/login/home")
-class LoginActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+class LoginActivity : BaseTitleActivity() {
+    override fun layoutId(): Int {
+        return R.layout.activity_login
     }
+
+    override fun initView() {
+
+    }
+
+    override fun initData() {
+
+    }
+
+
+    override fun titleText(): String {
+        return intent.getStringExtra("title") ?: ""
+    }
+
 }

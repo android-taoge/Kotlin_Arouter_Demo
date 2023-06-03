@@ -20,3 +20,4 @@ rootProject.name = "ArouterDemo2"
 include ':app'
 include ':login'
 include ':communicate'
+include ':baselibrary'
