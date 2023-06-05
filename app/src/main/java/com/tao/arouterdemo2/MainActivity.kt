@@ -1,11 +1,14 @@
 package com.tao.arouterdemo2
 
+import android.util.Log
 import android.widget.TextView
 import com.alibaba.android.arouter.launcher.ARouter
+import com.tao.baselibrary.base.BaseActivity
 import com.tao.baselibrary.base.BaseTitleActivity
+import com.tao.baselibrary.base.LoadService
 import com.tao.communicate.service.IUserService
 
-class MainActivity : BaseTitleActivity() {
+class MainActivity : BaseActivity() {
     override fun layoutId(): Int {
         return R.layout.activity_main
     }
@@ -25,7 +28,14 @@ class MainActivity : BaseTitleActivity() {
     }
 
 
-    override fun titleText(): String {
-        return "我是主页标题"
+    override fun onLoadService(loadService: LoadService) {
+        super.onLoadService(loadService)
+
     }
+
+
+
+//    override fun titleText(): String {
+//        return "我是主页标题"
+//    }
 }

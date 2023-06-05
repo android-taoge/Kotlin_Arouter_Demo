@@ -2,6 +2,7 @@ package com.tao.login
 
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.tao.baselibrary.base.BaseTitleActivity
+import com.tao.baselibrary.base.LoadService
 
 @Route(path = "/login/home")
 class LoginActivity : BaseTitleActivity() {
@@ -16,6 +17,7 @@ class LoginActivity : BaseTitleActivity() {
     override fun initData() {
 
     }
+
 
 
     override fun titleText(): String {

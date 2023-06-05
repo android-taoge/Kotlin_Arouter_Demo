@@ -1,5 +1,7 @@
 package com.tao.baselibrary.baseextra
 
+import com.tao.baselibrary.base.LoadService
+
 /**
  * @Author tangtao
  * @Description:
@@ -9,4 +11,6 @@ interface IActivity {
     fun layoutId():Int
     fun initView()
     fun initData()
+
+    fun onLoadService(loadService:LoadService)
 }

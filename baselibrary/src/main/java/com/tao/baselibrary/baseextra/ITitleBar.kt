@@ -5,6 +5,8 @@ package com.tao.baselibrary.baseextra
  * @Description:
  * @Date: 2023/6/3 10:56 PM
  */
-interface ITitleBar {
+
+
+interface ITitleBar:IActivity {
     fun titleText():String
 }
