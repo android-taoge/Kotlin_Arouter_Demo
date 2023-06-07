@@ -15,7 +15,7 @@ abstract class BaseActivity : AppCompatActivity(), IActivity {
     protected lateinit var mLoadService: LoadService
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setContentView(layoutId())
+        setContentView(bindView())
         super.onCreate(savedInstanceState)
         initView()
     }

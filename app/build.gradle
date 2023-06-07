@@ -26,6 +26,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures{
+        dataBinding true
+    }
+
     kapt {
         arguments {
             arg("AROUTER_MODULE_NAME", project.getName())

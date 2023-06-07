@@ -1,5 +1,6 @@
 package com.tao.baselibrary.baseextra
 
+import android.view.View
 import com.tao.baselibrary.base.LoadService
 
 /**
@@ -12,5 +13,6 @@ interface IActivity {
     fun initView()
     fun initData()
 
+    fun bindView():View
     fun onLoadService(loadService:LoadService)
 }

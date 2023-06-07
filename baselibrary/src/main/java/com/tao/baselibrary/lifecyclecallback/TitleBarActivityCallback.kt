@@ -12,7 +12,6 @@ import android.widget.TextView
 import com.tao.baselibrary.R
 import com.tao.baselibrary.base.LoadService
 import com.tao.baselibrary.base.LoadSir
-import com.tao.baselibrary.baseextra.IActivity
 import com.tao.baselibrary.baseextra.ITitleBar
 
 /**
@@ -33,10 +32,13 @@ class TitleBarActivityCallback : ActivityLifecycleCallbacks {
                 LayoutInflater.from(activity).inflate(R.layout.layout_titlebar, null, false).apply {
                     layoutParams = wrapLayoutParams()
                 }
-            val content =
-                LayoutInflater.from(activity).inflate(activity.layoutId(), null, false).apply {
-                    layoutParams = matchLayoutParams()
-                }
+            val content = activity.bindView()
+//                LayoutInflater.from(activity).inflate(activity.layoutId(), null, false).apply {
+//                    layoutParams = matchLayoutParams()
+//                }
+            if (content.parent != null) {
+                (content.parent as ViewGroup).removeAllViews()
+            }
             childRoot.removeAllViews()
             childRoot.addView(titleBar)
             childRoot.addView(content)
