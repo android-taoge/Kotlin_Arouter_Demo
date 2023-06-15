@@ -6,10 +6,9 @@ import com.tao.communicate.bean.UserInfo
 import com.tao.communicate.service.IUserService
 import com.tao.login.proto_store.userPreferencesStore
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.runBlocking
+import java.io.IOException
 
 /**
  * @Author tangtao
@@ -22,9 +21,14 @@ class UserInfoService : IUserService {
 
     private lateinit var mContext: Context
     override fun userFlow(): Flow<UserInfo?> {
-        return mContext.userPreferencesStore.data.map {
+        return mContext.userPreferencesStore.data.catch {
+            if (it is IOException) {
+                throw IOException(it)
+            }
+        }.map {
             UserInfo(it.userId, it.token, it.phone)
         }
+
     }
 
 
