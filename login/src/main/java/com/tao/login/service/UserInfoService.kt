@@ -2,7 +2,14 @@ package com.tao.login.service
 
 import android.content.Context
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.tao.communicate.bean.UserInfo
 import com.tao.communicate.service.IUserService
+import com.tao.login.proto_store.userPreferencesStore
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.runBlocking
 
 /**
  * @Author tangtao
@@ -11,11 +18,17 @@ import com.tao.communicate.service.IUserService
  */
 
 @Route(path = "/login/userinfo")
-class UserInfoService:IUserService {
-    override fun getUserToken(): String {
-        return "hdaferaeonigea"
+class UserInfoService : IUserService {
+
+    private lateinit var mContext: Context
+    override fun userFlow(): Flow<UserInfo?> {
+        return mContext.userPreferencesStore.data.map {
+            UserInfo(it.userId, it.token, it.phone)
+        }
     }
 
-    override fun init(context: Context?) {
+
+    override fun init(context: Context) {
+        mContext = context
     }
 }

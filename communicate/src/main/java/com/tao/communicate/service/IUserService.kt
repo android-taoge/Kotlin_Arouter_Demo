@@ -1,6 +1,8 @@
 package com.tao.communicate.service
 
 import com.alibaba.android.arouter.facade.template.IProvider
+import com.tao.communicate.bean.UserInfo
+import kotlinx.coroutines.flow.Flow
 
 /**
  * @Author tangtao
@@ -8,5 +10,5 @@ import com.alibaba.android.arouter.facade.template.IProvider
  * @Date: 2023/6/3 1:15 PM
  */
 interface IUserService:IProvider {
-    fun getUserToken():String
+    fun userFlow():Flow<UserInfo?>
 }

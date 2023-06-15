@@ -11,15 +11,25 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         tools:context=".LoginActivity">
 
         <!--    <include layout="@layout/layout_titlebar"/>-->
         <TextView
             android:id="@+id/tv_login"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="登录页面" />
+            android:text="登录保存" />
+
+        <TextView
+            android:id="@+id/tv_clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="清除信息" />
+
 
     </LinearLayout>
 </layout>

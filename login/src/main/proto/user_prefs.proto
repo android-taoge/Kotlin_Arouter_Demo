@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "com.tao.login.datastore";
+option java_multiple_files = true;
+
+message UserPreferences {
+  // filter for showing / hiding completed tasks
+  int32 userId = 1;
+  string token = 2;
+  string phone = 3;
+}

@@ -2,6 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id "com.google.protobuf" version "0.8.17"
 }
 
 android {
@@ -40,7 +41,19 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+//    sourceSets {
+//        main {
+//            proto {
+//                // proto 文件默认路径是 src/main/proto
+//                // 可以通过 srcDir 修改 proto 文件的位置
+//                srcDir 'src/main/proto'
+//            }
+//        }
+//    }
+
 }
+
 
 dependencies {
 
@@ -55,4 +68,28 @@ dependencies {
 
     implementation 'com.alibaba:arouter-api:1.5.2'
     kapt 'com.alibaba:arouter-compiler:1.5.2'
+
+
+    implementation  "androidx.datastore:datastore-core:1.0.0"
+    implementation  "androidx.datastore:datastore:1.0.0"
+    implementation  "com.google.protobuf:protobuf-javalite:3.18.0"
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.19.4"
+    }
+
+    // Generates the java Protobuf-lite code for the Protobufs in this project. See
+    // https://github.com/google/protobuf-gradle-plugin#customizing-protobuf-compilation
+    // for more information.
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java {
+                    option 'lite'
+                }
+            }
+        }
+    }
 }

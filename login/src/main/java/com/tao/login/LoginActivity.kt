@@ -1,12 +1,13 @@
 package com.tao.login
 
 import android.view.View
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.tao.baselibrary.base.BaseTitleActivity
-import com.tao.baselibrary.base.LoadService
 import com.tao.login.databinding.ActivityLoginBinding
+import com.tao.login.proto_store.userPreferencesStore
+import kotlinx.coroutines.launch
 
 @Route(path = "/login/home")
 class LoginActivity : BaseTitleActivity() {
@@ -17,7 +18,25 @@ class LoginActivity : BaseTitleActivity() {
 
     override fun initView() {
         mBinding.tvLogin.setOnClickListener {
-            Toast.makeText(this,"点击了登录",Toast.LENGTH_SHORT).show()
+
+            //NotifyMsgManager.notifyMsg("我是点击登录的吐司")
+            lifecycleScope.launch {
+                userPreferencesStore.updateData { userPrefs ->
+                    userPrefs.toBuilder()
+                        .setUserId(2)
+                        .setToken("hhhhhhhhhhhh")
+                        .setPhone("15608716466")
+                        .build()
+                }
+            }
+        }
+
+        mBinding.tvClear.setOnClickListener {
+            lifecycleScope.launch {
+                userPreferencesStore.updateData { userPrefs ->
+                    userPrefs.toBuilder().clear().build()
+                }
+            }
         }
     }
 
